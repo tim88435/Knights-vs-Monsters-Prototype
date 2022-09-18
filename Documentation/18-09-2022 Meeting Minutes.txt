@@ -1,0 +1,26 @@
+- Using GitHub to collaborate
+- Prototype will be singleplayer
+- Name: "Knights vs Monsters" ("NvM")
+- Unity Version: 2021.3.8f1
+- Github project link: https://github.com/tim88435/Knights-vs-Monsters-Prototype
+- You'll need to be added as a collaborator to be able to push to the branches
+- Clone the reopsitory and make a branch for yourself
+- Tim will figure out how merge conficts can be resolved in Git later
+- Will be using a layer mask to raycast what tile the player is selecting
+- Scritps for prototype:
+	- Spawning script
+		- Spawns in defensive towers
+			- On Tiles
+			- Raycasts to get the root of any attacking unit, then fires
+		- Spawns in attacking units
+			- in tile rows (on last tile)
+			- go from left to right
+	- Defensive towers: shoot prefabs that go in the direction (Vector3?)
+	- Attack units: Go to a direction (Vector3?)
+	- Tile script: (Tile)
+		- Tiles are referenced as a Vector2Int (Position)
+		- GameObject reference to defensive tower (
+	- Tile Manager script (TileManager)
+		- Singleton Instance
+		- Array for the end tiles (Tile script) in the scene
+		- //Array for the enemy end tiles (Tile script) in the scene
