@@ -28,4 +28,9 @@ public class TileManager : MonoBehaviour
         Singleton = this;//singleton stuff
     }
     [SerializeField] public Tile[] firstTiles = new Tile[6];
+    [SerializeField] private GameObject prefab;
+    private void Start()
+    {
+        Instantiate(prefab, firstTiles[Random.Range(0, firstTiles.Length - 1)].transform.position + Vector3.up, Quaternion.identity);
+    }
 }
