@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    //tile position
+    [SerializeField] private Vector2 _position;
+    public Vector2 position
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        get { return _position; }
     }
 }
