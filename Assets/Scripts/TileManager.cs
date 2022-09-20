@@ -44,4 +44,27 @@ public class TileManager : MonoBehaviour
         }
         //Instantiate(prefab, firstTiles[Random.Range(0, firstTiles.Length - 1)].transform.position + Vector3.up, Quaternion.identity);
     }
+    public static Vector2Int TileCoordinates(GameObject tile)
+    {
+        if (Singleton == null)
+        {
+            Debug.LogWarning($"{typeof(TileManager)} does not exist in the current context\nReturning Vector2Int.zero");
+            return Vector2Int.zero;
+        }
+        for (int i = 0; i < Singleton.tiles.Count; i++)
+        {
+            if (Singleton.tiles[i].Contains(tile))
+            {
+                for (int j = 0; j < Singleton.tiles[i].Count; j++)
+                {
+                    if (Singleton.tiles[i][j] == tile)
+                    {
+                        return new Vector2Int(i, j);
+                    }
+                }
+            }
+        }
+        Debug.Log("GameObject not a saved tile\nReturning Vector2Int.zero");
+        return Vector2Int.zero;
+    }
 }

@@ -25,17 +25,21 @@ public class PlaceUnit : MonoBehaviour
             RaycastHit hit;
             //important
             //must make all tiles part of the tile layer
-            if (Input.GetMouseButtonDown(0) && Physics.Raycast(ray, out hit, float.PositiveInfinity, 1 << 6))//layermask = tile
+            if (Physics.Raycast(ray, out hit, float.PositiveInfinity, 1 << 6))//layermask = tile
             {
                 Vector3 position = hit.collider.gameObject.transform.position;//move object to the object that the raycast hit
                 position.y += selected.GetComponentInChildren<MeshRenderer>().bounds.size.y / 2;//add half of unit/tower height
                 selected.transform.position = position;
-                MonoBehaviour[] scripts = selected.GetComponentsInChildren<MonoBehaviour>();//get every script on the root gameobject and turn it on
-                foreach (MonoBehaviour script in scripts)
+                if (Input.GetMouseButtonDown(0))
                 {
-                    script.enabled = true;
+                    MonoBehaviour[] scripts = selected.GetComponentsInChildren<MonoBehaviour>();//get every script on the root gameobject and turn it on
+                    foreach (MonoBehaviour script in scripts)
+                    {
+                        script.enabled = true;
+                    }
+                    Debug.Log(TileManager.TileCoordinates(hit.collider.gameObject));
+                    selected = null;
                 }
-                selected = null;
             }
         }
     }
